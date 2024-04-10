@@ -7,7 +7,6 @@ from train.load_data import load_onlinefood
 from sklearn.metrics import roc_auc_score, f1_score
 import joblib
 
-# 加载鸢尾花数据集（二分类任务）
 # data = load_iris()
 def train_tpot():
     X, y = load_onlinefood()
