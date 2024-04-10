@@ -1,4 +1,4 @@
-### Run
+## Run
 
 ```bash
 python load_data.py
