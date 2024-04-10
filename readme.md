@@ -1,3 +1,10 @@
+## Run
+
+```bash
+python load_data.py
+python train_xgb.py
+```
+
 ## 自动机器学习框架
 
 Auto-Sklearn: 是基于scikit-learn的一个自动化机器学习工具，非常适用于分类问题，包括二分类。它可以自动进行模型选择和超参数调优。
