@@ -4,8 +4,7 @@ from sklearn.model_selection import train_test_split
 
 from load_data import load_onlinefood
 
-if __name__ == '__main__':
-
+def train_xgb():
     # 读取数据并划分数据集
     x, y = load_onlinefood()
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, shuffle = True, random_state = 0)
