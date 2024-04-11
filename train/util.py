@@ -1,9 +1,8 @@
 import pandas as pd
 
 def preprocess(path: str, heads: list[str], formats: list[str], isnorm: bool=True):
-    """ 数据预处理 """
 
-    # 读取数据并只保留heads里的列
+    # 读取
     df = pd.read_csv(path)[heads]
 
     # 预处理
@@ -28,7 +27,6 @@ def preprocess(path: str, heads: list[str], formats: list[str], isnorm: bool=Tru
     # 归一化
     if isnorm:
         x = (x - x.mean(axis=0)) / x.std(axis=0)
-
     return x, y
 
 def load_onlinefood():
@@ -38,6 +36,26 @@ def load_onlinefood():
         ['num', 'str', 'str', 'str', 'str', 'str', 'num', 'num', 'num', 'num', 'str', 'pos']
     )
 
-if __name__ == '__main__':
+def load_onlinefood_splited():
+    from sklearn.model_selection import train_test_split
     x, y = load_onlinefood()
-    print(x, y)
+    return train_test_split(x, y, test_size=0.2, random_state=42)
+
+def evaluate(y, y_hat):
+    from sklearn.metrics import roc_auc_score, f1_score, accuracy_score, recall_score
+    auc = roc_auc_score(y, y_hat)
+    f1 = f1_score(y, y_hat>0.5, average='macro')
+    acc = accuracy_score(y, y_hat>0.5)
+    rec = recall_score(y, y_hat>0.5)
+    print(f"auc: {auc:.2%}, f1: {f1:.2%}, acc: {acc:.2%}, rec: {rec:.2%}")
+    return f"auc_{auc:.2f}_f1_{f1:.2f}"
+
+def save(y, path):
+    with open(path, 'w') as f:
+        for i in y:
+            f.write(f'{i}\n')
+    print(f'data saved to {path}')
+
+if __name__ == '__main__':
+    x_train, x_test, y_train, y_test = load_onlinefood_splited()
+    print(x_train.shape, x_test.shape, y_train.shape, y_test.shape)

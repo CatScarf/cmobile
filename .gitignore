@@ -1,2 +1,8 @@
 __pycache__
 *.json
+*.pkl
+*.plk
+*.joblib
+*.tpot
+*.txt
+logs.log

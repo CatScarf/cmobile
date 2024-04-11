@@ -1,19 +1,13 @@
-
+from autosklearn import classification as ask
 
 import util
 
-def train_xgb():
-    import xgboost
+def train_autosk():
     # 加载数据
     x_train, x_test, y_train, y_test = util.load_onlinefood_splited()
 
     # 初始化
-    model = xgboost.XGBClassifier(
-        random_state=42,
-        early_stopping_rounds=20,
-        eval_metric='auc',
-        scale_pos_weight=(y_train == 0).sum() / (y_train == 1).sum(),
-    )
+    model = ask.AutoSklearnClassifier()
 
     # 训练
     model.fit(
@@ -33,4 +27,4 @@ def train_xgb():
     util.save(yhat, result + '.txt')
 
 if __name__ == '__main__':
-    train_xgb()
+    train_autosk()
