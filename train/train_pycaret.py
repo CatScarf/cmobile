@@ -14,7 +14,7 @@ df = pd.DataFrame(X_train, columns=[f"feature_{i}" for i in range(0, X.shape[-1]
 df["target"] = y_train
 
 # 初始化分类设置
-clf_setup = setup(data=df, target="target", silent=True)
+clf_setup = setup(data=df, target="target", silent=True) #
 
 # 比较不同模型
 best_model = compare_models()
