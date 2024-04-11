@@ -1,8 +1,9 @@
 ## Run
 
 ```bash
-python load_data.py
-python train_xgb.py
+python load_data.py   # 胡津彰
+python train_xgb.py   # 胡津彰
+python train_tpot.py  # 黄子峻
 ```
 
 ## 自动机器学习框架

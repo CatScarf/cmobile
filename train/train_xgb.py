@@ -1,3 +1,7 @@
+"""
+pip install xgboost
+"""
+
 import xgboost
 from sklearn.metrics import roc_auc_score, f1_score
 from sklearn.model_selection import train_test_split
@@ -36,3 +40,5 @@ def train_xgb():
     model.save_model(path)
     print(f'model saved to {path}')
     
+if __name__ == '__main__':
+    train_xgb()
