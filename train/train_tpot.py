@@ -3,7 +3,7 @@ from tpot import TPOTClassifier
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 # from sklearn.model_selection import cross_val_score
-from train.load_data import load_onlinefood
+from load_data import load_onlinefood
 from sklearn.metrics import roc_auc_score, f1_score
 import joblib
 
@@ -37,8 +37,14 @@ def train_tpot():
     f1 = f1_score(y_test>0.5, yhat_test>0.5, average='macro')
     print(f"auc: {auc:.2f}, f1: {f1:.2f}")
 
-    # 保存模型为json
-    best_pipeline = tpot.fitted_pipeline_
+    # 保存模型为pkl
+    
+    tpot.export('tpot_auc_{:.4f}_f1_{:.4f}.pkl'.format(auc,f1))
 
-    # 保存最佳流水线到文件
-    joblib.dump(best_pipeline, 'tpot_auc_{:.4f}_f1_{:.4f}.pkl'.format(auc,f1))
+def test():
+    tpot_trained = TPOTClassifier()
+    auc = 0.7849
+    f1 = 0.7354
+    tpot_trained = tpot_trained.load("tpot_auc_{:.4f}_f1_{:.4f}.pkl".format(auc,f1))
+
+train_tpot()

@@ -26,8 +26,8 @@ final_model = finalize_model(best_model)
 evaluate_model(final_model)
 
 # 在新数据上进行预测（您可以将此部分替换为您自己的测试数据）
-new_data = pd.DataFrame(X_test, columns=[f"feature_{i}" for i in range(0, X.shape[-1])])
-predictions = predict_model(final_model, data=new_data)
+new_data = pd.DataFrame(X_test, columns=[f"feature_{i}" for i in range(0, X_test.shape[-1])])
+predictions = predict_model(final_model, data=new_data, raw_score=True)
 
 # 打印预测结果
 print(predictions)
