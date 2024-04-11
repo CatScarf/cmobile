@@ -1,3 +1,4 @@
+# pip isntall auto-sklearn (only for linux)
 from autosklearn import classification as ask
 
 import util
