@@ -1,6 +1,6 @@
 import pandas as pd
 
-def preprocess(path: str, heads: list[str], formats: list[str], isreg: bool, isnorm: bool=True):
+def preprocess(path: str, heads: list, formats: list, isreg: bool, isnorm: bool=True):
 
     # 读取
     df = pd.read_csv(path)[heads]
