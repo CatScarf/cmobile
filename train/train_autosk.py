@@ -20,7 +20,7 @@ def train_autosk():
 
     # 评估
     yhat_test = model.predict_proba(x_test)[:,1]
-    result = util.evaluate(y_test, yhat_test)
+    result = util.evaluate_classification(y_test, yhat_test)
 
     # 保存
     x, _ = util.load_onlinefood()
